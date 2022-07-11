@@ -11,7 +11,7 @@ jobs:
     container: python:3.8.10
     strategy:
       matrix:
-        python-version: [ "3.9" ]
+        python-version: [ "3.8" ]
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
@@ -25,7 +25,6 @@ jobs:
           poetry config virtualenvs.create false
           python -m pip install --upgrade pip
           poetry install
-          make test_mongo_setup
       - name: Test App
         run: |
           make test
